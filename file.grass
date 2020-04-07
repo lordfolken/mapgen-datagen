@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#g.remove -f type=all name=water_area,water_area1,water_area2,water_area3,water_area4
+#v.build.polylines input=water_area1 output=water_area2
+#v.generalize input=water_area2 output=water_area3 method=douglas threshold=0.002
+#v.clean input=water_area3 output=water_area4 tool=snap,break,rmdupl thres=0.002
+#v.clean input=water_area4 output=water_area tool=rmline type=all
+#g.remove -f type=all name=water_area1,water_area2,water_area3,water_area4
+#v.out.ogr input=water_area type=all output=$DEST_PATH/water_area.shp
+
+BASEDIR=${PWD}
+
+echo $PWD
+
+cd ${BASEDIR}/workdir/water_shapefiles
+EPSG:3358 
+
+g.remove vect=railway_line,railway_line1,railway_line2,railway_line3,railway_line4
+v.in.ogr -t input=$CONVERTED_PATH layer=railway_line output=railway_line1
+v.build.polylines input=railway_line1 output=railway_line2
+v.generalize input=railway_line2 output=railway_line3 method=douglas threshold=0.002
+v.clean input=railway_line3 output=railway_line4 tool=snap,break,rmdupl thres=0.002
+v.clean input=railway_line4 output=railway_line tool=rmline type=line
+g.remove vect=railway_line1,railway_line2,railway_line3,railway_line4
+v.out.ogr input=railway_line type=line output=$DEST_PATH/railway_line.shp
+
+
+
+#v.in.ogr -t input=water_area output=water_area1
+#v.build.polylines input=water_area1 output=water_area2
+#v.generalize input=water_area2 output=water_area4 method=douglas threshold=0.02 --overwrite

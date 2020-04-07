@@ -1,0 +1,31 @@
+#!/bin/bash
+
+rm -rf workdir/xcm
+rm -rf workdir/xcm_extracted
+rm -rf workdir/xcm_new
+rm -rf workdir/xcm_out
+
+mkdir -p workdir/xcm
+mkdir -p workdir/xcm_extracted
+mkdir -p workdir/xcm_new
+mkdir -p workdir/xcm_out
+
+cp origdata/xcm/ALPS_HighRes.xcm workdir/xcm/ALPS_HighRes.zip
+unzip workdir/xcm/ALPS_HighRes.zip -d workdir/xcm_extracted/
+
+cp workdir/xcm_extracted/topology.tpl workdir/xcm_new/
+cp workdir/xcm_extracted/terrain.* workdir/xcm_new/
+cp workdir/xcm_extracted/waypoints.cup workdir/xcm_new/
+
+cp workdir/railway_shapefiles/railway_line* workdir/xcm_new/
+cp workdir/roadbig_shapefiles/roadbig_line* workdir/xcm_new/
+cp workdir/roadmedium_shapefiles/roadmedium_line* workdir/xcm_new/
+cp workdir/roadsmall_shapefiles/roadsmall_line* workdir/xcm_new/
+cp workdir/water_shapefiles/water_line* workdir/xcm_new/
+cp workdir/water_shapefiles/water_area* workdir/xcm_new/
+
+BASEDIR=$(pwd)
+cd workdir/xcm_new/
+zip -0 ${BASEDIR}/workdir/xcm_out/ALPS_HighRes.zip *
+cd $BASEDIR
+mv workdir/xcm_out/ALPS_HighRes.zip workdir/xcm_out/ALPS_HighRes.xcm

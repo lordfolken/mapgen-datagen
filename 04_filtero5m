@@ -1,0 +1,15 @@
+#!/bin/bash
+
+BASE=$(basename -s .o5m $1)
+BASEDIR=${PWD}
+
+function process_o5m() {
+  KEEP="$2"
+  mkdir -p workdir/$1_o5m
+  osmfilter ${BASE}_small.o5m "${KEEP}" --out-o5m -o=${BASEDIR}/workdir/$1_o5m/${BASE}_$1.o5m
+}
+
+process_o5m railway --keep="railway=rail"
+process_o5m roadbig --keep="highway=motorway =primary =trunk"
+process_o5m roadmedium --keep="highway=secondary"
+process_o5m water --keep="waterway=river =riverbank natural=water"

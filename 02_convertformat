@@ -1,0 +1,5 @@
+#!/bin/bash
+
+BASE=$1
+
+osmconvert --out-o5m ${BASE}.gz -o=${BASE}.o5m 

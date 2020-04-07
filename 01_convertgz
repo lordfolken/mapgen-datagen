@@ -1,0 +1,5 @@
+#!/bin/bash
+
+BASE=$1
+
+pbzip2 -cd ./origdata/osm/${BASE}.osm.bz2 | nice pigz -9 -c > ${BASE}.gz

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+BASE=$(basename -s o5m $1)
+BASEDIR=${PWD}
+
+  v.generalize input=water_area output=water_area method=douglas_reduction threshold=0 reduction=30
+
+function reduceshp() {
+
+  cd ${BASEDIR}
+}
+
+reduceshp railway
+reduceshp roadbig
+reduceshp roadmedium
+reduceshp roadsmall
+reduceshp water
