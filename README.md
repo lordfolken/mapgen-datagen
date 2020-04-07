@@ -1,4 +1,4 @@
-# Generate OSM data for Mapgen
+# Generate OSM data for Mapgen [WIP]
 
 Prototype for building more detailed maps for xcsoar.
 Takes osm files and currently genereates:
