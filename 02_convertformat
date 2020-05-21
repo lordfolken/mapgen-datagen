@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/bin/bash -x
 
 BASE=$1
 
-osmconvert --out-o5m ${BASE}.gz -o=${BASE}.o5m 
+osmconvert --out-o5m origdata/osm/${BASE}.gz -o=origdata/osm/${BASE}.o5m 

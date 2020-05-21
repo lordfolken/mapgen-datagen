@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/bin/bash -x
 
 BASE=$(basename -s .o5m $1)
 BASEDIR=${PWD}
 
 function process_o5m() {
   KEEP="$2"
-  mkdir -p workdir/$1_o5m
-  osmfilter ${BASE}_small.o5m "${KEEP}" --out-o5m -o=${BASEDIR}/workdir/$1_o5m/${BASE}_$1.o5m
+  mkdir -p workdir/${BASE}/o5m/$1_o5m/
+  ./osmfilter workdir/${BASE}/o5m/${BASE}_small.o5m "${KEEP}" --out-o5m -o=${BASEDIR}/workdir/${BASE}/o5m//$1_o5m/${BASE}_$1.o5m
 }
 
 process_o5m railway --keep="railway=rail"

@@ -8,5 +8,6 @@ fi
 ./03_dropauthor $1
 ./04_filtero5m $1
 ./05_converttoshp $1
+./05_reduceshp $1
 ./zz_packup
 ./zz_test

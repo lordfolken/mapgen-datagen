@@ -1,17 +1,19 @@
-#!/bin/bash
+#!/bin/bash -x
 
 BASE=$(basename -s o5m $1)
 BASEDIR=${PWD}
 
-  v.generalize input=water_area output=water_area method=douglas_reduction threshold=0 reduction=30
+set -e
+
 
 function reduceshp() {
-
-  cd ${BASEDIR}
+  cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+  grass -c $1 -o --exec v.in.ogr -t input=./ layer=$1_line output=$1_line1
+  grass -c $1 --exec v.generalize input=$1_line output=$1_line_reduced method=douglas_reduction threshold=0 reduction=30
 }
 
-reduceshp railway
 reduceshp roadbig
-reduceshp roadmedium
-reduceshp roadsmall
-reduceshp water
+#reduceshp roadmedium
+#reduceshp railway
+#reduceshp roadsmall
+#reduceshp water

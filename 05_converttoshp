@@ -6,16 +6,14 @@ BASEDIR=${PWD}
 function convert2shp() {
 
   cd ${BASEDIR}
+  mkdir -p workdir/${BASE}/osm/$1_osm/
+  mkdir -p workdir/${BASE}/shapefiles/$1_shapefiles/
 
-  mkdir -p workdir/${1}_o5m
-  mkdir -p workdir/${1}_osm
-  rm -rf workdir/${1}_shapefiles
-  mkdir -p workdir/${1}_shapefiles
+osmconvert workdir/${BASE}/o5m/$1_o5m/${BASE}_$1.o5m --out-osm -o=workdir/${BASE}/osm/$1_osm/${BASE}_$1.osm 
 
-osmconvert workdir/$1_o5m/${BASE}_$1.o5m --out-osm -o=workdir/$1_osm/${BASE}_$1.osm 
-ogr2ogr -skipfailures -f "ESRI Shapefile" workdir/$1_shapefiles workdir/$1_osm/${BASE}_$1.osm
+ogr2ogr -skipfailures -f "ESRI Shapefile" workdir/${BASE}/shapefiles/$1_shapefiles workdir/${BASE}/osm/$1_osm/${BASE}_$1.osm
 
-cd ${BASEDIR}/workdir/$1_shapefiles/
+cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles/
 rename s/lines/$1_line/ line*
 rename s/multipolygons/$1_area/ multipolygons*
   cd ${BASEDIR}
@@ -24,6 +22,4 @@ rename s/multipolygons/$1_area/ multipolygons*
 convert2shp railway
 convert2shp roadbig
 convert2shp roadmedium
-convert2shp roadsmall
 convert2shp water
-
