@@ -8,12 +8,11 @@ set -e
 
 function reduceshp() {
   cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
-  grass -c $1 -o --exec v.in.ogr -t input=./ layer=$1_line output=$1_line1
-  grass -c $1 --exec v.generalize input=$1_line output=$1_line_reduced method=douglas_reduction threshold=0 reduction=30
+  rm -rf $1
+  grass -c EPSG:4326 $1 --exec sh $BASEDIR/reduce.sh $1
 }
 
 reduceshp roadbig
-#reduceshp roadmedium
-#reduceshp railway
-#reduceshp roadsmall
-#reduceshp water
+reduceshp roadmedium
+reduceshp railway
+reduceshp water
