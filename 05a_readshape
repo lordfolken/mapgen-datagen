@@ -1,0 +1,15 @@
+#!/bin/bash -x
+
+BASE=$(basename -s o5m $1)
+BASEDIR=${PWD}
+
+set -e
+
+source ./osmdatalib
+
+readshp_line roadbig
+readshp_line roadmedium
+readshp_line railway
+readshp_line water
+readshp_area water
+readshp_area city

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Function library
+function process_o5m() {
+  KEEP="$2"
+  mkdir -p workdir/${BASE}/o5m/$1_o5m/
+  ./osmfilter workdir/${BASE}/o5m/${BASE}_small.o5m "${KEEP}" --out-o5m -o=${BASEDIR}/workdir/${BASE}/o5m//$1_o5m/${BASE}_$1.o5m
+}
+
+function readshp_area() {
+  cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+  rm -rf "./$1"
+  grass -c EPSG:4326 $1 --exec sh $BASEDIR/read_area.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+}
+
+function readshp_line() {
+  cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+  rm -rf "./$1"
+  grass -c EPSG:4326 $1 --exec sh $BASEDIR/read_line.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+}
+
+function reduceshp_area() {
+  cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+  grass $1/PERMANENT --exec sh $BASEDIR/reduce_area.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles 
+}
+
+function reduceshp_line() {
+  cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+  grass $1/PERMANENT --exec sh $BASEDIR/reduce_line.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+}

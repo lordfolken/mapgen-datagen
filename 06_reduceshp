@@ -5,18 +5,7 @@ BASEDIR=${PWD}
 
 set -e
 
-function reduceshp_area() {
-  cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
-  rm -rf $1
-  grass -c EPSG:4326 $1 --exec sh $BASEDIR/reduce_area.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
-}
-
-function reduceshp_line() {
-  cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
-  rm -rf $1
-  grass -c EPSG:4326 $1 --exec sh $BASEDIR/reduce_line.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
-}
-
+source ./osmdatalib
 
 reduceshp_line roadbig
 reduceshp_line roadmedium
