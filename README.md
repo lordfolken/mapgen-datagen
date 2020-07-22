@@ -8,15 +8,13 @@ Takes osm files and currently genereates:
 * roads
 
 ## Usage
+ * install docker and pull the dockercontainer: 
  * ./doit.sh do it all
  * zz_packup generates a xcm file
- * zz_test copies the map into xcsoar data and start xcsoar
+ * zz_test copies the map into xcsoar data and starts xcsoar
 
 ## issues:
- * this is really a personal experiment platform
-   not really meant to see usage like this.
- * currently the mapset data isn't reduced
-   this challenges the xcsoar render to impractical standstil.
+ * city boundaries are not yet consistent 
  
 ## Goals
  * To create the osm data needed for xcsoar, worldwide. 

@@ -1,6 +1,3 @@
-#!/bin/bash
-
-# Function library
 function process_o5m() {
   KEEP="$2"
   mkdir -p workdir/${BASE}/o5m/$1_o5m/
@@ -8,15 +5,23 @@ function process_o5m() {
 }
 
 function readshp_area() {
+  mkdir -p ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
   cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
-  rm -rf "./$1"
-  grass -c EPSG:4326 $1 --exec sh $BASEDIR/read_area.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+  if [ -d "${1}" ];
+    then
+      rm -rf "./$1"
+  fi
+  grass -c $1 --exec sh $BASEDIR/read_area.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
 }
 
 function readshp_line() {
+  mkdir -p ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
   cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
-  rm -rf "./$1"
-  grass -c EPSG:4326 $1 --exec sh $BASEDIR/read_line.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+  if [ -d "${1}" ];
+    then
+      rm -rf "./$1"
+  fi
+  grass -c $1 --exec sh $BASEDIR/read_line.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
 }
 
 function reduceshp_area() {

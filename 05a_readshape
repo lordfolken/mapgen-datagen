@@ -1,9 +1,9 @@
 #!/bin/bash -x
 
+set -e
+
 BASE=$(basename -s o5m $1)
 BASEDIR=${PWD}
-
-set -e
 
 source ./osmdatalib
 

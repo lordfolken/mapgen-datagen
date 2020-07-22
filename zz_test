@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
+
 cp workdir/xcm_out/ALPS_HighRes.xcm ~/.xcsoar/
-rm -rf ~/.xcsoar/cache
 ~/git-xcsoar/XCSoar/output/UNIX/bin/xcsoar -simulator

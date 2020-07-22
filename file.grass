@@ -8,12 +8,16 @@
 #g.remove -f type=all name=water_area1,water_area2,water_area3,water_area4
 #v.out.ogr input=water_area type=all output=$DEST_PATH/water_area.shp
 
+BASE=${basename $1 -s o5m}
 BASEDIR=${PWD}
 
 echo $PWD
 
-cd ${BASEDIR}/workdir/water_shapefiles
-EPSG:3358 
+
+CONVERTED_PATH=${BASEDIR}/workdir/${BASE}/railway_shapefiles
+DEST_PATH=${BASEDIR}/workdir/${BASE}/railway_shapefiles_out
+
+mkdir -p $DEST_PATH
 
 g.remove vect=railway_line,railway_line1,railway_line2,railway_line3,railway_line4
 v.in.ogr -t input=$CONVERTED_PATH layer=railway_line output=railway_line1
