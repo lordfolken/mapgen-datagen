@@ -1,3 +1,6 @@
+layers="water"
+
+
 function process_o5m() {
   KEEP="$2"
   mkdir -p workdir/${BASE}/o5m/$1_o5m/
@@ -11,7 +14,7 @@ function readshp_area() {
     then
       rm -rf "./$1"
   fi
-  grass -c $1 --exec sh $BASEDIR/read_area.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+  grass -c EPSG:4326 $1 --exec sh $BASEDIR/read_area.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
 }
 
 function readshp_line() {
@@ -21,7 +24,7 @@ function readshp_line() {
     then
       rm -rf "./$1"
   fi
-  grass -c $1 --exec sh $BASEDIR/read_line.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
+  grass -c EPSG:4326 $1 --exec sh $BASEDIR/read_line.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
 }
 
 function reduceshp_area() {
@@ -33,3 +36,21 @@ function reduceshp_line() {
   cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
   grass $1/PERMANENT --exec sh $BASEDIR/reduce_line.sh $1 ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles
 }
+
+function convert2shp() {
+
+  cd ${BASEDIR}
+  mkdir -p workdir/${BASE}/osm/$1_osm/
+  mkdir -p workdir/${BASE}/shapefiles/$1_shapefiles/
+
+osmconvert workdir/${BASE}/o5m/$1_o5m/${BASE}_$1.o5m --out-osm -o=workdir/${BASE}/osm/$1_osm/${BASE}_$1.osm 
+
+ogr2ogr -skipfailures -f "ESRI Shapefile" workdir/${BASE}/shapefiles/$1_shapefiles workdir/${BASE}/osm/$1_osm/${BASE}_$1.osm
+
+cd ${BASEDIR}/workdir/${BASE}/shapefiles/$1_shapefiles/
+rename -f s/lines/$1_line/ line*
+rename -f s/multipolygons/$1_area/ multipolygons*
+  cd ${BASEDIR}
+}
+
+

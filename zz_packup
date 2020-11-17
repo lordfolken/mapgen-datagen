@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-set -e
+#set -e
 
 rm -rf workdir/xcm
 rm -rf workdir/xcm_extracted
@@ -29,10 +29,10 @@ cp workdir/$1/shapefiles/city_shapefiles/city_area_redux* workdir/xcm_new/
 
 BASEDIR=$(pwd)
 cd workdir/xcm_new/
-rename 's/_redux//g' *.dbf 
-rename 's/_redux//g' *.shp
-rename 's/_redux//g' *.shx
-rename 's/_redux//g' *.prj
+rename -f 's/_redux//g' *.dbf 
+rename -f 's/_redux//g' *.shp
+rename -f 's/_redux//g' *.shx
+rename -f 's/_redux//g' *.prj
 
 zip -0 ${BASEDIR}/workdir/xcm_out/ALPS_HighRes.zip *
 cd $BASEDIR

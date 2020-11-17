@@ -12,4 +12,4 @@ reduceshp_line roadmedium
 reduceshp_line railway
 reduceshp_line water
 reduceshp_area water
-reduceshp_area city
+#reduceshp_area city

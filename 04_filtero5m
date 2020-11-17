@@ -8,6 +8,5 @@ source ./osmdatalib
 process_o5m railway --keep="railway=rail"
 process_o5m roadbig --keep="highway=motorway =primary =trunk"
 process_o5m roadmedium --keep="highway=secondary"
-process_o5m water --keep="waterway=river =riverbank natural=water" 
-#process_o5m water --keep="natural=water" 
-process_o5m city --keep="boundary=administrative and admin_level=9"
+process_o5m water --keep="water=harbor =lake =natural =canal =river =reservoir =basin =riverbank natural=water waterway=river =canal =riverbank" 
+#process_o5m city --keep="boundary=administrative and admin_level=9"

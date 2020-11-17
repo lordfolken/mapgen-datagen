@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 export LC_ALL=en_US.utf8
 

@@ -12,4 +12,4 @@ readshp_line roadmedium
 readshp_line railway
 readshp_line water
 readshp_area water
-readshp_area city
+#readshp_area city
