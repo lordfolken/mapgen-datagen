@@ -8,4 +8,6 @@ source ./osmdatalib
 convert2shp railway
 convert2shp roadbig
 convert2shp roadmedium
+convert2shp roadsmall
 convert2shp water
+convert2shp city

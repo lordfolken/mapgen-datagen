@@ -22,6 +22,7 @@ cp workdir/xcm_extracted/waypoints.cup workdir/xcm_new/
 cp workdir/$1/shapefiles/railway_shapefiles/railway_line_redux* workdir/xcm_new/
 cp workdir/$1/shapefiles/roadbig_shapefiles/roadbig_line_redux* workdir/xcm_new/
 cp workdir/$1/shapefiles/roadmedium_shapefiles/roadmedium_line_redux* workdir/xcm_new/
+cp workdir/$1/shapefiles/roadsmall_shapefiles/roadsmall_line_redux* workdir/xcm_new/
 cp workdir/$1/shapefiles/water_shapefiles/water_area_redux* workdir/xcm_new/
 cp workdir/$1/shapefiles/water_shapefiles/water_line_redux* workdir/xcm_new/
 cp workdir/$1/shapefiles/city_shapefiles/city_area_redux* workdir/xcm_new/
