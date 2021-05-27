@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z "$1" ]; then
+  echo specify zipfile
+  exit 1
+fi
+
 BASE=$(basename -s .o5m $1)
 KEEP="--keep=waterway=*"
 

@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
 BASE=$(basename -s .o5m $1)
-DROP="--drop-author --drop-version --drop-tags=other_tags="
+DROP="--drop-author --drop-version"
 
 mkdir -p workdir/${BASE}/o5m/
 

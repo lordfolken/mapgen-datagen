@@ -1,40 +1,42 @@
-#!/bin/bash -x
+#!/bin/bash 
 
 #set -e
 
-rm -rf workdir/xcm
-rm -rf workdir/xcm_extracted
-rm -rf workdir/xcm_new
-rm -rf workdir/xcm_out
+rm -rf workdir/$1/xcm
+rm -rf workdir/$1/xcm/extracted
+rm -rf workdir/$1/xcm/new
+rm -rf workdir/$1/xcm/out
 
-mkdir -p workdir/xcm
-mkdir -p workdir/xcm_extracted
-mkdir -p workdir/xcm_new
-mkdir -p workdir/xcm_out
+mkdir -p workdir/$1/xcm
+mkdir -p workdir/$1/xcm/extracted
+mkdir -p workdir/$1/xcm/new
+mkdir -p workdir/$1/xcm/out
 
-cp origdata/xcm/ALPS_HighRes.xcm workdir/xcm/ALPS_HighRes.zip
-unzip workdir/xcm/ALPS_HighRes.zip -d workdir/xcm_extracted/
+cp origdata/xcm/ALPS_HighRes.xcm workdir/$1/xcm/ALPS_HighRes.zip
+unzip workdir/$1/xcm/ALPS_HighRes.zip -d workdir/$1/xcm/extracted/
 
-cp workdir/xcm_extracted/topology.tpl workdir/xcm_new/
-cp workdir/xcm_extracted/terrain.* workdir/xcm_new/
-cp workdir/xcm_extracted/waypoints.cup workdir/xcm_new/
+cp origdata/topology/topology.tpl workdir/$1/xcm/new/
+cp workdir/$1/xcm/extracted/terrain.* workdir/$1/xcm/new/
+cp workdir/$1/xcm/extracted/waypoints.cup workdir/$1/xcm/new/
 
-cp workdir/$1/shapefiles/railway_shapefiles/railway_line_redux* workdir/xcm_new/
-cp workdir/$1/shapefiles/roadbig_shapefiles/roadbig_line_redux* workdir/xcm_new/
-cp workdir/$1/shapefiles/roadmedium_shapefiles/roadmedium_line_redux* workdir/xcm_new/
-cp workdir/$1/shapefiles/roadsmall_shapefiles/roadsmall_line_redux* workdir/xcm_new/
-cp workdir/$1/shapefiles/water_shapefiles/water_area_redux* workdir/xcm_new/
-cp workdir/$1/shapefiles/water_shapefiles/water_line_redux* workdir/xcm_new/
-cp workdir/$1/shapefiles/city_shapefiles/city_area_redux* workdir/xcm_new/
+
+cp workdir/$1/shapefiles/railway_shapefiles_redux/railway_line_redux* workdir/$1/xcm/new/
+cp workdir/$1/shapefiles/roadbig_shapefiles_redux/roadbig_line_redux* workdir/$1/xcm/new/
+cp workdir/$1/shapefiles/roadmedium_shapefiles_redux/roadmedium_line_redux* workdir/$1/xcm/new/
+cp workdir/$1/shapefiles/roadsmall_shapefiles_redux/roadsmall_line_redux* workdir/$1/xcm/new/
+cp workdir/$1/shapefiles/water_shapefiles_redux/water_area_redux* workdir/$1/xcm/new/
+cp workdir/$1/shapefiles/water_shapefiles_redux/water_line_redux* workdir/$1/xcm/new/
+cp workdir/$1/shapefiles/city_shapefiles_redux/city_area_redux* workdir/$1/xcm/new/
+cp workdir/$1/shapefiles/city_shapefiles_redux/city_point_redux* workdir/$1/xcm/new/
 
 
 BASEDIR=$(pwd)
-cd workdir/xcm_new/
+cd workdir/$1/xcm/new/
 rename -f 's/_redux//g' *.dbf 
 rename -f 's/_redux//g' *.shp
 rename -f 's/_redux//g' *.shx
 rename -f 's/_redux//g' *.prj
 
-zip -0 ${BASEDIR}/workdir/xcm_out/ALPS_HighRes.zip *
+zip -0 ${BASEDIR}/workdir/$1/xcm/out/ALPS_HighRes.zip *
 cd $BASEDIR
-mv workdir/xcm_out/ALPS_HighRes.zip workdir/xcm_out/ALPS_HighRes.xcm
+mv workdir/$1/xcm/out/ALPS_HighRes.zip workdir/$1/xcm/out/ALPS_HighRes.xcm

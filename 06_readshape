@@ -1,27 +1,29 @@
 #!/bin/bash
 
-if [ -z "${1}" ]; then
-  echo specify zipfile
+if [ -z "$1" ]; then
+  echo specify zipfile without zip exentsion
   exit 1
 fi
 
+set -e
+
 BASE=$(basename -s o5m "${1}")
-BASEDIR=${PWD}
+BASEDIR="${PWD}"
 
 source ./osmdatalib
 source ./vars
 
 for each in $line_layers
   do 
-    convert2shp "$each"
+    readshp_line "$each"
 done
 
 for each in $area_layers
   do 
-    convert2shp "$each"
+     readshp_area "$each"
 done
 
 for each in $point_layers
   do 
-    convert2shp "$each"
+     readshp_point "$each"
 done

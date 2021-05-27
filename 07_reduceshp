@@ -1,0 +1,27 @@
+#!/bin/bash -x
+
+BASE=$(basename -s o5m $1)
+BASEDIR=${PWD}
+
+set -e
+
+source ./osmdatalib
+source ./vars
+
+for each in $line_layers
+  do 
+    echo "### REDUCING layer $each"
+    reduceshp_line "$each"
+done
+
+for each in $area_layers
+  do 
+    echo "### REDUCING shape $each"
+     reduceshp_area "$each"
+done
+
+for each in $point_layers
+  do 
+    echo "### REDUCING point $each"
+     reduceshp_point "$each"
+done

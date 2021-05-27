@@ -2,4 +2,9 @@
 
 BASE=$1
 
+if [ -z "${1}" ]; then
+  specify zipfile
+  exit 1 
+fi
+
 pbzip2 -cd ./origdata/osm/${BASE}.osm.bz2 | nice pigz -9 -c > origdata/osm/${BASE}.gz

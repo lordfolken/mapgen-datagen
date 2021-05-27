@@ -2,5 +2,10 @@
 
 set -e
 
-cp workdir/xcm_out/ALPS_HighRes.xcm ~/.xcsoar/
+if [ -z "$1" ]; then 
+  echo "specify zipfile"
+  exit 1
+fi
+
+cp workdir/$1/xcm/out/ALPS_HighRes.xcm ~/.xcsoar/
 ~/git-xcsoar/XCSoar/output/UNIX/bin/xcsoar -simulator
