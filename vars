@@ -1,0 +1,6 @@
+# Define layers to operate on
+#line_layers="roadbig roadsmall roadmedium railway"
+#area_layers="city water airport runway airportgrass"
+line_layers=""
+area_layers="airport runway airportgrass"
+point_layers=""
