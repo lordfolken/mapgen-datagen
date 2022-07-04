@@ -8,9 +8,9 @@ set -e
 #./01_convertgz $1
 #./02_convertformat $1
 echo '### DROPAUTHOR'
-./03_dropauthor $1
+#./03_dropauthor $1
 echo '### FILTERo5m'
-./04_filtero5m $1
+#./04_filtero5m $1
 echo '### CONVERTTOSHP'
 ./05_converttoshp $1
 echo '### READSHP'

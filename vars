@@ -2,5 +2,6 @@
 #line_layers="roadbig roadsmall roadmedium railway"
 #area_layers="city water airport runway airportgrass"
 line_layers=""
-area_layers="airport runway airportgrass"
+#area_layers="airport runway airportgrass"
+area_layers="water"
 point_layers=""

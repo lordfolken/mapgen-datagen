@@ -12,11 +12,14 @@ LAYER=$2
 source ./osmdatalib
 
 #process_o5m city --keep="landuse=residential =industrial =commerical place=village place=town"
-#process_o5m railway --keep="railway=rail" 
+#process_o5m railway --keep="railway=*" 
+#process_o5m road --keep="highway=*"
+#process_o5m buildings --keep="building=hangar =stadium"
 #process_o5m roadbig --keep="highway=motorway =primary =trunk"
 #process_o5m roadmedium --keep="highway=secondary highway=tertiary"
 #process_o5m roadsmall --keep="highway=unclassified"
-#process_o5m water --keep="water=lake =reservoir =pond =lagoon =oxbow natural=water =bay =glacier =strait =coastline waterway=harbor =natural =canal =river =reservoir =basin =riverbank =tidal_channel" 
-process_o5m airport --keep="aeroway=aerodrome"
-process_o5m airportgrass --keep-ways="(aeroway=aerodrome and landuse=grass)" --drop-relations
-process_o5m airportrunway --keep="aeroway=runway aeroway=taxiway aeroway=airstrip"
+process_o5m water --keep="water=lake =reservoir =pond =lagoon =oxbow natural=water =bay =glacier =strait =coastline waterway=harbor =natural =canal =river =reservoir =basin =riverbank =tidal_channel" 
+process_o5m water --keep="water=*" 
+#process_o5m airport --keep="aeroway=*"
+#process_o5m airportgrass --keep-ways="(aeroway=aerodrome and landuse=grass)" --drop-relations
+#process_o5m airportrunway --keep="aeroway=runway aeroway=taxiway aeroway=airstrip"
