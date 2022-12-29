@@ -1,8 +1,0 @@
-#!/bin/bash -x
-
-BASE=$(basename -s .o5m $1)
-DROP="--drop-author --drop-version"
-
-mkdir -p workdir/${BASE}/o5m/
-
-./osmfilter origdata/osm/${BASE}.o5m ${DROP} --out-o5m -o=workdir/${BASE}/o5m/${BASE}_small.o5m
