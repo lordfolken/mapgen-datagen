@@ -6,7 +6,7 @@ function process_o5m() {
   shift
   KEEP="$@"
   mkdir -p workdir/${BASE}/o5m/$NAME_o5m/
-  time ./osmfilter workdir/${BASE}/o5m/${BASE}_small.o5m "${KEEP}" --out-o5m -o=${BASEDIR}/workdir/${BASE}/o5m//$NAME_o5m/${BASE}_$NAME.o5m
+  time ./osmfilter workdir/${BASE}/o5m/${BASE}.o5m "${KEEP}" --out-o5m -o=${BASEDIR}/workdir/${BASE}/o5m//$NAME_o5m/${BASE}_$NAME.o5m
 }
 
 function readshp_point() {
