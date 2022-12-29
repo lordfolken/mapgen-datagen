@@ -7,4 +7,4 @@ if [ -z "${1}" ]; then
   exit 1 
 fi
 
-osmconvert --out-o5m origdata/osm/${BASE}.gz -o=origdata/osm/${BASE}.o5m 
+osmconvert --drop-author --drop-version --out-o5m origdata/osm/${BASE}.gz -o=origdata/osm/${BASE}.o5m 
