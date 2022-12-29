@@ -3,7 +3,7 @@
 BASE=$1
 
 if [ -z "${1}" ]; then
-  specify zipfile
+  echo specify zipfile
   exit 1 
 fi
 
